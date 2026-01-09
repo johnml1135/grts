@@ -1,0 +1,42 @@
+%%{init: {"flowchart": {"padding": 0}}}%%
+flowchart LR
+  %% Use <br/> for reliable line breaks in Mermaid node labels.
+  %% Aim: show the 2024 baseline, then the 2025 fork: bad "vibe/slop" vs good "ICV → agents".
+
+  A2024["2024<br/>Copilot"] --> CPT24["Ask<br/>inline edits"]
+  CPT24 --> SP24["Simple prompting"]
+  SP24 --> OUTGOOD24["Bug fixes + autocomplete<br/>~20% speedup"]
+
+  A2025["2025–26<br/>Copilot"] --> AG25["Agentic coding"]
+
+  AG25 --> SP25["Simple prompting"]
+  SP25 --> OUTGOOD25A["Vibe coding<br/>prototype demos"]
+  SP25 --> OUTBAD25["AI slop + misalignment<br/>security bugs"]
+
+  AG25 --> TP25["G R T S"]
+  TP25 --> OUTGOOD25B["Agent orchestration<br/>5–10× productivity"]
+
+  classDef neutral fill:#f3f4f6,stroke:#9ca3af,stroke-width:2px,color:#111827
+  classDef decision fill:#dbeafe,stroke:#3b82f6,stroke-width:2px,color:#1e3a8a
+  classDef bad fill:#ffe4e6,stroke:#fb7185,stroke-width:2px,color:#9f1239
+  classDef good fill:#dcfce7,stroke:#22c55e,stroke-width:2px,color:#14532d
+
+  class A2024,A2025,CPT24,AG25 neutral
+  class SP24,SP25,TP25 decision
+  class OUTBAD25 bad
+  class OUTGOOD24,OUTGOOD25A,OUTGOOD25B good
+
+  %% Link coloring by edge index (in order of appearance of --> lines):
+  %% 0 A2024->CPT24
+  %% 1 CPT24->SP24
+  %% 2 SP24->OUTGOOD24
+  %% 3 A2025->AG25
+  %% 4 AG25->SP25
+  %% 5 SP25->OUTGOOD25A
+  %% 6 SP25->OUTBAD25
+  %% 7 AG25->TP25
+  %% 8 TP25->OUTGOOD25B
+  linkStyle 0,3 stroke:#9ca3af,stroke-width:2px
+  linkStyle 1,4,7 stroke:#3b82f6,stroke-width:3px
+  linkStyle 6 stroke:#fb7185,stroke-width:3px
+  linkStyle 2,5,8 stroke:#22c55e,stroke-width:3px
