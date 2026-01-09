@@ -4,6 +4,9 @@
 
 # GRTS
 
+## 📄 Slide deck (PDF)
+**Download / view:** [slides/GRTS.pdf](slides/GRTS.pdf)
+
 GRTS is a practical system for working with coding agents:
 
 - 🟢 **Guidance** 🧭 — how to prompt and supervise
