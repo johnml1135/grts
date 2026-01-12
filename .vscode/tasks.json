@@ -2,8 +2,27 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"label": "Regenerate Mermaid SVGs",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"--yes",
+				"@mermaid-js/mermaid-cli@latest",
+				"-i",
+				"slides/assets/grts-slide2-flowchart.mmd",
+				"-o",
+				"slides/assets/grts-slide2-flowchart.svg"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
 			"label": "Export GRTS slides (PDF)",
 			"type": "shell",
+			"dependsOn": [
+				"Regenerate Mermaid SVGs"
+			],
+			"dependsOrder": "sequence",
 			"command": "npx",
 			"args": [
 				"--yes",
@@ -17,6 +36,20 @@
 			"isBackground": false,
 			"problemMatcher": [],
 			"group": "build"
+		},
+		{
+			"label": "Present GRTS slides (Speaker notes)",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"--yes",
+				"@marp-team/marp-cli@latest",
+				"slides/GRTS.md",
+				"--preview",
+				"--allow-local-files"
+			],
+			"isBackground": true,
+			"problemMatcher": []
 		}
 	]
 }
