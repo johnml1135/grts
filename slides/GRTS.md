@@ -246,15 +246,22 @@ With these tools in place, the agent will be able to do more tasks with fewer to
 ---
 # <span class="s">✅ Specifications</span> <span class="subline">Objectives | Checklists | Planning | Requirements</span>
 
-* You mostly review outputs and spot-check code/decisions.
-* For larger, more ambiguous work, spend time planning to reduce churn and wrong turns.
+<style scoped>
+section {
+    font-size: 24px;
+}
+</style>
 
-| How much ambiguity? | Recommended workflow |
-|---|---|
-| **Level 1 (Low)** | For bugs and scoped changes, we can just make a single prompt |
-| **Level 2 (Low → Medium)** | 1–3 planning prompts (research/explain/3 options) → then implement |
-| **Level 3 (Medium → High)** | Create a checklist in Markdown → review → implement |
-| **Level 4 (High)** | Use [OpenSpec](https://github.com/Fission-AI/OpenSpec) or [Spec Kit](https://github.github.io/spec-kit/): specify → clarify → plan → analyze → implement |
+For larger, more ambiguous work, spend time planning to reduce churn and wrong turns.
+
+| How large? How ambiguous? | Example | Recommended workflow |
+|---|---|---|
+| **Level 1 (Low)** | bugs and small edits | we can just make a single prompt |
+| **Level 2 (Medium)** | Don't know best way to implement | 1–3 planning prompts (research/explain/3 options) → then implement |
+| **Level 3 (High)** | Want the model to follow a specific checklist | Create a checklist in Markdown → review → implement |
+| **Level 4 (New feature)** | Significant planning and research needed.  Many steps. | Use [OpenSpec](https://github.com/Fission-AI/OpenSpec) or [Spec Kit](https://github.github.io/spec-kit/): specify → clarify → plan → analyze → implement |
+
+<div class="centered"><b><i>Takeaway: 1-2 weeks - develop sense of when a model fails and "go to the next level".  Chose OpenSpec, Spec-kit or other platform for large features.</b></i></div>
 
 <!--
 Let's waterfall like it's 1999!
