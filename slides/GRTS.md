@@ -94,7 +94,7 @@ Marp slide deck notes:
 
 <div class="centered">Don’t build features. <b>Build the system that builds features.</b></div>
 
-<!-- _notes:
+<!--
 Talk track (why this deck exists):
 - In 2024, AI helped you write lines.
 - In 2025, AI can help you move work across the lifecycle: search → plan → edit → test → summarize.
@@ -228,49 +228,45 @@ section {
 | Stop the approvals! | **chat.tools.terminal.autoApprove** for git status, list files, get file content |
 
 
-<div class="centered"><b><i>Takeaway: 1 week - Craft a set of MCP tools, VSCode tasks, restrictions and auto-approvals (and update custom agent instructions) to make your "guided, rule-constrained stupid genius" powerful.</b></i></div>
+<div class="centered"><b><i>Takeaway: 1 week - Craft a thoughtful set of MCP tools, VSCode tasks, restrictions and auto-approvals (and update custom agent instructions) to make your "guided, rule-constrained stupid genius" powerful.</b></i></div>
 
-<!-- _notes:
-If you’re in a legacy/regulated environment, tools are how you keep this safe.
+<!--
+With rules in place, we can focus on giving power tools to the agent.
 
-Ground-truth principle:
-- Treat tool output as truth (tests, CI, benchmarks, simulator/HIL traces), not the model’s confidence.
+With great power comes great responsibility.
 
-Context7:
-- Use when touching third-party libraries/frameworks; reduces stale examples and hallucinated APIs.
+Assess the possible failures of each tool and the risks of it being wrong (malware? Lose your secrets? Incorrect GitHub pull requests being created?)  Either:
+* Risk too high - don't give access to the tool
+* Moderate risk - require explicit approval to run the tool
+* Low risk - auto-approve use of the tool
 
-Serena:
-- Use on large repos when you need symbol-level changes and accurate call-site discovery.
-
-Security posture:
-- Tool approval + terminal approval are gates. Don’t auto-approve broadly in high-risk repos.
-- If you enable auto-approval, keep it read-only and time-boxed.
+With these tools in place, the agent will be able to do more tasks with fewer tokens, not getting lost as often.
 -->
 
 ---
 # <span class="s">✅ Specifications</span> <span class="subline">Objectives | Checklists | Planning | Requirements</span>
 
 * You mostly review outputs and spot-check code/decisions.
-* For larger work, spend time planning to reduce churn and wrong turns.
-* **Level 1**: For bugs and scoped changes, we can just make a single prompt
-* **Level 2**: 1–3 planning prompts (research/explain/3 options) → then implement
-* **Level 3**: Create a checklist in Markdown → review → implement
-* 1-page templates help a lot: [Task spec](../legacy/A1-task-spec-template.md) + [rules of engagement](../legacy/A2-rules-of-engagement.md)
-* **Level 4**: Use [OpenSpec](https://github.com/Fission-AI/OpenSpec) or [Spec Kit](https://github.github.io/spec-kit/): specify → clarify → plan → analyze → implement
+* For larger, more ambiguous work, spend time planning to reduce churn and wrong turns.
 
-<!-- _notes:
-Practitioner framing:
-- Specs aren’t bureaucracy; they’re how you make delegation possible.
+| How much ambiguity? | Recommended workflow |
+|---|---|
+| **Level 1 (Low)** | For bugs and scoped changes, we can just make a single prompt |
+| **Level 2 (Low → Medium)** | 1–3 planning prompts (research/explain/3 options) → then implement |
+| **Level 3 (Medium → High)** | Create a checklist in Markdown → review → implement |
+| **Level 4 (High)** | Use [OpenSpec](https://github.com/Fission-AI/OpenSpec) or [Spec Kit](https://github.github.io/spec-kit/): specify → clarify → plan → analyze → implement |
 
-Minimum viable spec (for legacy/regulatory):
-- Problem statement, in-scope/out-of-scope, constraints (perf/memory/timing/compat/safety), acceptance check, commands, stop conditions.
+<!--
+Let's waterfall like it's 1999!
 
-Oracle first mindset:
-- If you don’t have tests/simulator/golden files/corpus, your first task is “create the oracle.”
+Except, that it only takes 5 minutes to 1-2 hours to do all the planning and a few days max to implement the spec.
 
-Gates:
-- For higher-risk work: plan → diff → tests → checklist → merge.
-- Escalation rule: if 3 iterations fail, stop and ask for a new hypothesis.
+The power is that you can think through all the decisions, check for inconsistencies and severely reduce churn.
+
+If the agent is misunderstanding the spec, you are able to guide it to update and refine the spec BEFORE implementation.
+
+You many projects, you can just review the plan and checklist and trust the tests, model self-description and smoke testing.  This is how you get to 10x productivity increase with minimal slop.
+
 -->
 
 ---
@@ -282,7 +278,7 @@ Gates:
   * Delegate to cloud agents (ensure CI/CD is set up)
   * Split roles: Planner → Implementer → Reviewer
 
-<!-- _notes:
+<!--
 When multi-agent helps:
 - Parallel research: API docs, legacy behavior, bug history, test flakiness.
 - Separation of concerns reduces thrash and improves review quality.
@@ -341,7 +337,7 @@ td li {
 | **Ambiguity: Low** | Great for agents (docs, refactors, small tests) | Needs gates + review (small but critical changes) |
 | **Ambiguity: High** | Clarify first (spec + oracle) | Human-first (architecture/safety-critical/unclear bugs) |
 
-<!-- _notes:
+<!--
 Teach the “3 modes” decision:
 - Single prompt: Q&A, small snippet, one-file helper.
 - Agent loop: multi-step/multi-file work with plan + evidence gates.
@@ -349,7 +345,7 @@ Teach the “3 modes” decision:
 
 Rule of thumb for regulated/legacy:
 - If it changes runtime behavior in a hard-to-test area, treat it as high risk.
-- If there’s no oracle, the first deliverable is the oracle.
+- If there’s no oracle, the first deliverable is the oracle (even the unit test that fails - TDD)
 -->
 
 ---
@@ -395,7 +391,7 @@ section {
 - **T** — [GitHub Copilot Workspace (GitHub Blog)](https://github.blog/2024-04-29-github-copilot-workspace/)
 - **T** — [What is Foundry Agent Service?](https://learn.microsoft.com/en-us/azure/ai-foundry/agents/overview)
 
-<!-- _notes:
+<!--
 Guidance on references:
 - A3 is the “core set” I’d expect practitioners to actually click.
 - A4 is additional depth and secondary sources.
