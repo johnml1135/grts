@@ -136,15 +136,15 @@ section {
 }
 </style>
 * Get familiar with the eccentricities of the stupid genius
-  * **First steps (concrete, low context, low risk tasks):** Ask it to review your code, debug your software and research the next idea.
+  * **First steps (concrete, low context, low risk tasks):** Ask it to (1) review your code, (2) debug your software, (3) refactor a class and (4) research the next idea.
 * If the agent falls down a Rabbit hole 🐰🕳️ -> ask:
   * Research the best 3 approaches to this issue with pros/cons — cite evidence.
   * Check out this site <stack overflow link>.  Does it help?
 * If the agent tries to cheat or take a shortcut -> ask:
   * What is the proper way to fix this?
   * Right place for the code? Clean architecture? Utilities library?
-* Always define “good”:
-  * **Verification vs Validation** — built the thing right vs build the right thing &larr; we need this!
+* The agent keeps giving me the "average" solution - not the one for my domain!
+  * Make the domain explicit: "I am working in this domain and follow such and such guidlines."
   * If possible, use an oracle / golden sample / explicit success criteria.
 <div class="centered"><b><i>Takeaway: Spend 1-2 weeks getting a feel for working with the latest LLM's.</b></i></div>
 
@@ -170,18 +170,20 @@ section {
     font-size: 24px;
 }
 </style>
-* TODO - keep reviewing from here forward!
-* As of Dec 2025, the new models are able to hold 8 things in their mind at the same time - they are limited by the context you give them, not their intelligence.
-* Build repo overview + working rules (.github/copilot-instructions.md) &larr; **Copilot can help with this!**
-* Cite docs: build scripts, library locations, standards, linting guides
-* For the top 3–8 areas, define “roles” with repo-specific best practices (custom agents + optional .github/instructions/*.instructions.md)
-* Define boundaries: excluded (secrets), auto-approved (git fetch/status), and restricted files (CI/CD, security)
-## Tips:
-* Keep instruction files short (100–300 lines). Refine or split as needed.
-* Spend 1–2 days iterating; this pays off.
-* When prompts miss something (edge cases, wrong file, global var), explain the failure and update the right instruction file.
+* **.github/copilot-instructions.md** -> Repository orientation
+  * Agents will always read this file.  It should contain the fundamentals of the repo, the reality of what it is for, what base technologies are used, how to build and test and how it is structured.
+  * Point to any coding standards or guidelines - make them or move them into the repo if needed.
+* **Skills and custom agents** -> wearing different hats
+  * Have a repeatable way to focus the agent in on a task or technology.
+  * Find the best ones and iterate.  Is the agent getting better at understanding your context>?
+* **Keep it concise | Structure matters | Be direct | Show examples**
+* **Use [this blog post](https://github.blog/ai-and-ml/unlocking-the-full-power-of-copilot-code-review-master-your-instructions-files/) for instructions and [this repo](https://github.com/github/awesome-copilot) for a curated list of skills and custom agents**
 
-<!-- _notes:
+<div class="centered"><b><i>Takeaway: After bootstrapping the initial set of files, refine them heavily in the first week, putting the best guidance in the relevant places.</b></i></div>
+
+<!--
+Shock Claim: As of Dec 2025, the new models are able to hold [8 things in their mind](https://openai.com/index/introducing-gpt-5-2/) at the same time 🤯 - they are limited by the context you give them, not their intelligence.
+
 This is “Orientation” for regulated/legacy work:
 - Make “how we work here” explicit so the agent stops guessing conventions.
 
@@ -198,20 +200,35 @@ Roles (practitioner-friendly):
 Boundaries (regulatory reality):
 - Put safety-critical logic, CI/CD, and security configs behind stronger gates.
 - Make “may / may not” explicit and require evidence before merge.
+Tips
+* Keep it concise: Start small - keep it under 1000 lines.
+* Structure matters: Use headings and bullet points
+* Be direct: Short, imperative rules are more effective than long paragraphs.
+* Show examples: Demonstrate concepts with sample code or explanations
+
 -->
 ---
 # <span class="t">🧰 Tools</span> <span class="subline">Capabilities | Abilities | Touch the external world</span>
 
-Without extra tools, agents are limited to reading and writing files in your repo.
+<style scoped>
+section {
+    font-size: 22px;
+}
+</style>
 
-* Issue read and write: [GitHub MCP](https://github.com/github/github-mcp-server) [Atlassian MCP](https://www.atlassian.com/blog/announcements/remote-mcp-server)
-* Accurate API and function calls: [Context7](https://github.com/upstash/context7) + research online
-* Semantic repo navigation on large codebases: [Serena](https://oraios.github.io/serena/02-usage/030_clients.html)
-* Deterministic actions: generate a script for repetitive/complex work (e.g., convert NUnit3 tasks to NUnit4 across many files)
-* Truth sources: diffs, test output, CI checks, benchmarks/sim logs
-* VS Code tasks: Build, test, lint, format, etc.
-* Shell commands: git status, list files, get file content
-* Tip: Use settings.json -&gt;"chat.tools.terminal.autoApprove" for read-only commands
+
+| To get this | use this |
+|---|---|
+| Issue read and write | [GitHub MCP](https://github.com/github/github-mcp-server), [Atlassian MCP](https://www.atlassian.com/blog/announcements/remote-mcp-server) |
+| Up-do-date API | [Context7](https://github.com/upstash/context7) + research online |
+| Agent intellisense | [Serena](https://oraios.github.io/serena/02-usage/030_clients.html) |
+| Deterministic actions | Generate a script for repetitive/complex work (e.g., convert NUnit3 tasks to NUnit4 across many files) |
+| Truth sources | diffs, test output, CI checks, benchmarks/sim logs |
+| Easy local action | Make VS Code tasks for Build, test, lint, format, etc. |
+| Stop the approvals! | **chat.tools.terminal.autoApprove** for git status, list files, get file content |
+
+
+<div class="centered"><b><i>Takeaway: 1 week - Craft a set of MCP tools, VSCode tasks, restrictions and auto-approvals (and update custom agent instructions) to make your "guided, rule-constrained stupid genius" powerful.</b></i></div>
 
 <!-- _notes:
 If you’re in a legacy/regulated environment, tools are how you keep this safe.
