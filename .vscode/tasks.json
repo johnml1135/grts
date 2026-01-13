@@ -20,7 +20,8 @@
 			"label": "Export GRTS slides (PDF)",
 			"type": "shell",
 			"dependsOn": [
-				"Regenerate Mermaid SVGs"
+				"Regenerate Mermaid SVGs",
+				"Export GRTS slides (HTML)"
 			],
 			"dependsOrder": "sequence",
 			"command": "npx",
@@ -36,6 +37,22 @@
 			"isBackground": false,
 			"problemMatcher": [],
 			"group": "build"
+		},
+		{
+			"label": "Export GRTS slides (HTML)",
+			"type": "shell",
+			"command": "npx",
+			"args": [
+				"--yes",
+				"@marp-team/marp-cli@latest",
+				"slides/GRTS.md",
+				"--html",
+				"--allow-local-files",
+				"-o",
+				"slides/GRTS.html"
+			],
+			"isBackground": false,
+			"problemMatcher": []
 		},
 		{
 			"label": "Present GRTS slides (Speaker notes)",
