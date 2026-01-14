@@ -7,6 +7,9 @@
 ## 📄 Slide deck (PDF)
 **Download / view:** [slides/GRTS.pdf](slides/GRTS.pdf)
 
+## 🌐 Slide deck (HTML)
+**Download / view:** [slides/GRTS.html](slides/GRTS.html)
+
 GRTS is a practical system for working with coding agents:
 
 - 🟢 **Guidance** 🧭 — how to prompt and supervise
@@ -42,8 +45,13 @@ This repository contains the canonical GRTS deck and its assets.
 ## Source of truth 📌
 - Slide deck (Marp): `slides/GRTS.md`
 - Exported PDF: `slides/GRTS.pdf`
+- Exported HTML: `slides/GRTS.html`
 - Logo: `GRTS.png`
 - Deck assets (e.g., diagrams): `slides/assets/`
+
+## Build prerequisites
+- Node.js + npm/npx
+- There is **no** `package.json` in this repo, so `npm ci` will fail. Use `npx` commands (below) or the VS Code tasks.
 
 ## Export (PDF) 🖨️
 Use the VS Code task **Export GRTS slides (PDF)**, or run:
@@ -55,3 +63,20 @@ npx --yes @marp-team/marp-cli@latest slides/GRTS.md --pdf --allow-local-files -o
 Notes:
 - `--allow-local-files` is required for the logo and local assets.
 - The deck is intended to use standard Marp features (no custom engines/plugins).
+
+## Export (HTML)
+Use the VS Code task **Export GRTS slides (HTML)**, or run:
+
+```bash
+npx --yes @marp-team/marp-cli@latest slides/GRTS.md --html --allow-local-files -o slides/GRTS.html
+```
+
+## Present (speaker notes)
+Use the VS Code task **Present GRTS slides (Speaker notes)**, or run:
+
+```bash
+npx --yes @marp-team/marp-cli@latest slides/GRTS.md --preview --allow-local-files
+```
+
+## Diagrams (Mermaid)
+If you edit `slides/assets/grts-slide2-flowchart.mmd`, regenerate the committed SVG via the VS Code task **Regenerate Mermaid SVGs** (or rerun the PDF export task, which depends on it).

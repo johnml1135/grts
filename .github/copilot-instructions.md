@@ -21,7 +21,6 @@ Repo root:
 - `README.md`: quick overview + the canonical export command.
 - `GRTS.png`: logo used by the deck.
 - `slides/`: primary slide sources and exported artifacts.
-- `legacy/`: older/alternate content (reference material; not the Marp source of truth).
 - `.vscode/tasks.json`: contains the VS Code “build” task for PDF export.
 
 Slides:
@@ -54,6 +53,12 @@ Notes:
 ### Build (export) — HTML (secondary)
 - `npx --yes @marp-team/marp-cli@latest slides/GRTS.md --html --allow-local-files -o slides/GRTS.html`
 
+### Present — preview with speaker notes
+Preferred: run the VS Code task **Present GRTS slides (Speaker notes)**.
+
+CLI equivalent:
+- `npx --yes @marp-team/marp-cli@latest slides/GRTS.md --preview --allow-local-files`
+
 If an export is interrupted (e.g., Ctrl+C), just rerun it.
 
 ### Assets — regenerate Mermaid SVG (only if you edited the `.mmd`)
@@ -74,6 +79,6 @@ Notes:
 - Keep relative asset paths intact (e.g., the header logo references `../GRTS.png`).
 
 ## How to work efficiently (reduce repo searching)
-- Start edits in `slides/GRTS.md` unless the user explicitly asks for legacy content.
+- Start edits in `slides/GRTS.md`.
 - Use `.vscode/tasks.json` for the “known good” PDF export command.
 - Only search the repo if the instructions above are incomplete or contradict what you observe locally.

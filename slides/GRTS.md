@@ -109,7 +109,7 @@ Repeat the mantra once, then translate it:
 -->
 
 ---
-<!-- fit --->
+<!-- fit -->
 # Coding Agent: The very eager stupid genius
 <style scoped>
 p { text-align: center; }
@@ -137,19 +137,19 @@ section {
 </style>
 * Get familiar with the eccentricities of the stupid genius
   * **First steps (concrete, low context, low risk tasks):** Ask it to (1) review your code, (2) debug your software, (3) refactor a class and (4) research the next idea.
-* If the agent falls down a Rabbit hole 🐰🕳️ -> ask:
+* If the agent falls down a rabbit hole 🐰🕳️ -> ask:
   * Research the best 3 approaches to this issue with pros/cons — cite evidence.
   * Check out this site <stack overflow link>.  Does it help?
 * If the agent tries to cheat or take a shortcut -> ask:
   * What is the proper way to fix this?
   * Right place for the code? Clean architecture? Utilities library?
 * The agent keeps giving me the "average" solution - not the one for my domain!
-  * Make the domain explicit: "I am working in this domain and follow such and such guidlines."
+  * Make the domain explicit: "I am working in this domain and follow such and such guidelines."
   * If possible, use an oracle / golden sample / explicit success criteria.
-<div class="centered"><b><i>Takeaway: Spend 1-2 weeks getting a feel for working with the latest LLM's.</b></i></div>
+<div class="centered"><b><i>Takeaway: Spend 1-2 weeks getting a feel for working with the latest LLMs.</b></i></div>
 
 <!--
-The first step in this journey is to get to know the stupid 
+The first step in this journey is to get to know the stupid genius.
 The stupid genius will get lost and do the wrong thing.  They will make foolish mistakes.  There are some simple tasks that only require minimal context (the current file, a few ideas) to work through.  Use these "low context" prompts to get a feel for the leading agents that are available.  
 
 Things to watch out for:
@@ -221,8 +221,8 @@ section {
 | To get this | use this |
 |---|---|
 | Issue read and write | [GitHub MCP](https://github.com/github/github-mcp-server), [Atlassian MCP](https://www.atlassian.com/blog/announcements/remote-mcp-server) |
-| Up-do-date API | [Context7](https://github.com/upstash/context7) + research online |
-| Agent intellisense | [Serena](https://oraios.github.io/serena/02-usage/030_clients.html) |
+| Up-to-date API | [Context7](https://github.com/upstash/context7) + research online |
+| Agent IntelliSense | [Serena](https://oraios.github.io/serena/02-usage/030_clients.html) |
 | Deterministic actions | Generate a script for repetitive/complex work (e.g., convert NUnit3 tasks to NUnit4 across many files) |
 | Truth sources | diffs, test output, CI checks, benchmarks/sim logs |
 | Easy local action | Make VS Code tasks for Build, test, lint, format, etc. |
@@ -262,7 +262,7 @@ For larger, more ambiguous work, spend time planning to reduce churn and wrong t
 | **Level 3 (High)** | Want the model to follow a specific checklist | Create a checklist in Markdown → review → implement |
 | **Level 4 (New feature)** | Significant planning and research needed.  Many steps. | Use [OpenSpec](https://github.com/Fission-AI/OpenSpec) or [Spec Kit](https://github.github.io/spec-kit/): specify → clarify → plan → analyze → implement |
 
-<div class="centered"><b><i>Takeaway: 1-2 weeks - develop sense of when a model fails and "go to the next level".  Chose OpenSpec, Spec-kit or other platform for large features.</b></i></div>
+<div class="centered"><b><i>Takeaway: 1-2 weeks - develop a sense of when a model fails and "go to the next level". Choose OpenSpec, Spec Kit, or another platform for large features.</b></i></div>
 
 <!--
 Let's waterfall like it's 1999!
@@ -273,13 +273,19 @@ The power is that you can think through all the decisions, check for inconsisten
 
 If the agent is misunderstanding the spec, you are able to guide it to update and refine the spec BEFORE implementation.
 
-You many projects, you can just review the plan and checklist and trust the tests, model self-description and smoke testing.  This is how you get to 10x productivity increase with minimal slop.
+In many projects, you can review the plan and checklist and trust the tests, model self-description, and smoke testing. This is how you get to a 10x productivity increase with minimal slop.
 
 -->
 ---
-# Final thoughts: Best Practices from the trenches for not having AI ruin your codebase
+# Final thoughts 1: Don't have AI ruin your codebase
 
-Thanks for [your post](https://github.com/orgs/community/discussions/182197#discussioncomment-15283353) Deepayan-Thakur!
+<style scoped>
+section {
+    font-size: 24px;
+}
+</style>
+
+Taken from [Deepayan-Thakur's post](https://github.com/orgs/community/discussions/182197#discussioncomment-15283353):
 1. Treat AI Agents as Junior Engineers (With Super Speed)
 2. Enforce a “Human-in-the-Loop” Merge Contract
 3. CI Is Your Real Boss (Make It Ruthless)
@@ -290,6 +296,31 @@ Thanks for [your post](https://github.com/orgs/community/discussions/182197#disc
 8. Teach the Agent Your Rules (Or It Will Make Its Own)
 
 ---
+# Final thoughts 2: What is at stake
+
+<style scoped>
+section {
+    font-size: 22px;
+}
+</style>
+
+Also taken from [Deepayan-Thakur's post](https://github.com/orgs/community/discussions/182197#discussioncomment-15283353):
+
+AI coding agents are not a shortcut to engineering maturity.
+They amplify whatever discipline you already have.
+* Good processes → insane productivity boost
+* Weak processes → faster outages
+
+Use agents to:
+* Move faster on the obvious
+* Reduce boilerplate
+* Explore options
+
+But keep humans accountable for:
+* Architecture
+* Security
+* Taste
+
 # Extra slides
 ---
 # A1: Multi-agent workflows
@@ -370,7 +401,7 @@ Rule of thumb for regulated/legacy:
 - If there’s no oracle, the first deliverable is the oracle (even the unit test that fails - TDD)
 -->
 ---
-# A4: Extra References
+# A3: Extra References
 
 
 - [Building effective agents (Anthropic)](https://www.anthropic.com/research/building-effective-agents) — Designing agent loops: checkpoints, tool feedback, stop conditions.
