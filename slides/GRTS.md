@@ -173,11 +173,12 @@ section {
 * **.github/copilot-instructions.md** -> Repository orientation
   * Agents will always read this file.  It should contain the fundamentals of the repo, the reality of what it is for, what base technologies are used, how to build and test and how it is structured.
   * Point to any coding standards or guidelines - make them or move them into the repo if needed.
+  * Use [this blog post](https://github.blog/ai-and-ml/unlocking-the-full-power-of-copilot-code-review-master-your-instructions-files/) and [this documentation](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions) for instructions
 * **Skills and custom agents** -> wearing different hats
   * Have a repeatable way to focus the agent in on a task or technology.
   * Find the best ones and iterate.  Is the agent getting better at understanding your context>?
+  * Use [this repo](https://github.com/github/awesome-copilot) for a curated list of skills and custom agents
 * **Keep it concise | Structure matters | Be direct | Show examples**
-* **Use [this blog post](https://github.blog/ai-and-ml/unlocking-the-full-power-of-copilot-code-review-master-your-instructions-files/) for instructions and [this repo](https://github.com/github/awesome-copilot) for a curated list of skills and custom agents**
 
 <div class="centered"><b><i>Takeaway: After bootstrapping the initial set of files, refine them heavily in the first week, putting the best guidance in the relevant places.</b></i></div>
 
@@ -275,13 +276,27 @@ If the agent is misunderstanding the spec, you are able to guide it to update an
 You many projects, you can just review the plan and checklist and trust the tests, model self-description and smoke testing.  This is how you get to 10x productivity increase with minimal slop.
 
 -->
+---
+# Final thoughts: Best Practices from the trenches for not having AI ruin your codebase
 
+Thanks for [your post](https://github.com/orgs/community/discussions/182197#discussioncomment-15283353) Deepayan-Thakur!
+1. Treat AI Agents as Junior Engineers (With Super Speed)
+2. Enforce a “Human-in-the-Loop” Merge Contract
+3. CI Is Your Real Boss (Make It Ruthless)
+4. Security: Assume the Agent Is Overconfident
+5. Multi-Agent Setups: Divide Responsibilities or Suffer
+6. Maintainability > Cleverness (AI Loves Cleverness)
+7. Track Provenance: Know What the AI Touched
+8. Teach the Agent Your Rules (Or It Will Make Its Own)
+
+---
+# Extra slides
 ---
 # A1: Multi-agent workflows
 
 * You’ll often be waiting on agents. Use that time:
   * Research the next feature in parallel
-  * Use git worktrees / background agents for parallel branches
+  * Use [git worktrees](https://git-scm.com/docs/git-worktree) / background agents for parallel branches
   * Delegate to cloud agents (ensure CI/CD is set up)
   * Split roles: Planner → Implementer → Reviewer
 
@@ -354,55 +369,13 @@ Rule of thumb for regulated/legacy:
 - If it changes runtime behavior in a hard-to-test area, treat it as high risk.
 - If there’s no oracle, the first deliverable is the oracle (even the unit test that fails - TDD)
 -->
-
 ---
-<!-- fit -->
-# A3: References (Core)
-<style scoped>
-section {
-    font-size: 22px;
-}
-</style>
-- **G** — [Building effective agents (Anthropic)](https://www.anthropic.com/research/building-effective-agents) — Designing agent loops: checkpoints, tool feedback, stop conditions.
-- **R** — [Security (VS Code Copilot)](https://code.visualstudio.com/docs/copilot/security) — Trust boundaries, tool approvals, prompt injection risks.
-- **R** — [Workspace Trust (VS Code)](https://code.visualstudio.com/docs/editing/workspaces/workspace-trust) — Restricted Mode and why it matters for agents.
-- **R** — [LLM01:2025 Prompt Injection](https://genai.owasp.org/llmrisk/llm01-prompt-injection/) — Threat model + mitigations.
-- **R** — [About GitHub Copilot coding agent](https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent) — Capabilities, limits, and governance.
-- **T** — [Tutorial: Work with agents in VS Code](https://code.visualstudio.com/docs/copilot/agents/agents-tutorial) — Local/plan/background/cloud agent workflows + worktrees.
-- **T** — [Use tools in chat (VS Code) — Tool approval](https://code.visualstudio.com/docs/copilot/chat/chat-tools) — Tool approvals, URL post-approval, and auto-approval tradeoffs.
-- **S** — [Spec Kit](https://github.github.io/spec-kit/) — Spec → Plan → Tasks to make “done” measurable.
-- **S** — [CI (GitHub Actions)](https://docs.github.com/en/actions/automating-builds-and-tests/about-continuous-integration) — CI as a repeatable verification oracle.
-- **S** — [A Minimal, Reproducible Example](https://stackoverflow.com/help/minimal-reproducible-example) — Make bugs/tasks reproducible.
-- **S** — [Responsible use of GitHub Copilot coding agent](https://docs.github.com/en/copilot/responsible-use-of-github-copilot-features/responsible-use-of-copilot-coding-agent-on-githubcom) — Scope, acceptance criteria, review gates.
+# A4: Extra References
 
----
-<!-- fit -->
-# A4: References (More)
-<style scoped>
-section {
-    font-size: 22px;
-}
-</style>
 
-- **G** — [Lessons from Anthropic (secondary write-up)](https://techwithibrahim.medium.com/the-art-of-agent-prompting-lessons-from-anthropics-ai-team-e8c9ac4db3f3)
-- **T** — [GitHub Copilot in VS Code](https://code.visualstudio.com/docs/copilot/overview)
-- **T** — [Get started with GitHub Copilot in VS Code](https://code.visualstudio.com/docs/copilot/getting-started)
-- **T** — [Asking GitHub Copilot questions in your IDE](https://docs.github.com/en/copilot/how-tos/chat-with-copilot/chat-in-ide)
-- **T** — [Review AI-generated code edits (VS Code)](https://code.visualstudio.com/docs/copilot/chat/review-code-edits)
-- **R** — [Adding repository custom instructions for GitHub Copilot](https://docs.github.com/en/copilot/how-tos/configure-custom-instructions/add-repository-instructions)
-- **T** — [Context7 (GitHub)](https://github.com/upstash/context7)
-- **T** — [Serena docs](https://oraios.github.io/serena/02-usage/030_clients.html)
-- **T** — [git-worktree documentation](https://git-scm.com/docs/git-worktree)
-- **S** — [About issue and pull request templates (GitHub)](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates)
-- **S** — [Configuring issue templates for your repository (GitHub)](https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/configuring-issue-templates-for-your-repository)
-- **T** — [GitHub Copilot Workspace (GitHub Blog)](https://github.blog/2024-04-29-github-copilot-workspace/)
-- **T** — [What is Foundry Agent Service?](https://learn.microsoft.com/en-us/azure/ai-foundry/agents/overview)
-
-<!--
-Guidance on references:
-- A3 is the “core set” I’d expect practitioners to actually click.
-- A4 is additional depth and secondary sources.
-
-For regulated/legacy audiences:
-- Prioritize security/trust boundaries, tool approval, and oracles over “prompting tricks.”
--->
+- [Building effective agents (Anthropic)](https://www.anthropic.com/research/building-effective-agents) — Designing agent loops: checkpoints, tool feedback, stop conditions.
+- [About GitHub Copilot coding agent](https://docs.github.com/en/copilot/concepts/agents/coding-agent/about-coding-agent) — Capabilities, limits, and governance.
+- [Security (VS Code Copilot)](https://code.visualstudio.com/docs/copilot/security) — Trust boundaries, tool approvals, prompt injection risks.
+- [Tutorial: Work with agents in VS Code](https://code.visualstudio.com/docs/copilot/agents/agents-tutorial) — Local/plan/background/cloud agent workflows + worktrees.
+- [Use tools in chat (VS Code) — Tool approval](https://code.visualstudio.com/docs/copilot/chat/chat-tools) — Tool approvals, URL post-approval, and auto-approval tradeoffs.
+- [Lessons from Anthropic](https://techwithibrahim.medium.com/the-art-of-agent-prompting-lessons-from-anthropics-ai-team-e8c9ac4db3f3) as of November 2025
