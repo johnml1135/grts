@@ -105,7 +105,7 @@ Set expectations:
 - We’re not here to vibe-code a website. We’re here to safely move work in weird repos.
 
 Repeat the mantra once, then translate it:
-- “System” = durable orientation + tools + objective oracles + gates.
+- “System” = durable orientation + tools + objective golden examples + gates.
 -->
 
 ---
@@ -145,7 +145,7 @@ section {
   * Right place for the code? Clean architecture? Utilities library?
 * The agent keeps giving me the "average" solution - not the one for my domain!
   * Make the domain explicit: "I am working in this domain and follow such and such guidelines."
-  * If possible, use an oracle / golden sample / explicit success criteria.
+  * If possible, use a golden sample / explicit success criteria.
 <div class="centered"><b><i>Takeaway: Spend 1-2 weeks getting a feel for working with the latest LLMs.</b></i></div>
 
 <!--
